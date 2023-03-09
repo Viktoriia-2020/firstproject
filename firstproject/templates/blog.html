@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block head_title %}{{ title }}{% endblock head_title %}
+
+{% load static %}
+
+{% block content %}
+    
+    <section class="hero-wrap hero-wrap-2 ftco-degree-bg js-fullheight" style="background-image: url({% static 'images/bg_1.jpg' %});" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate pb-5 text-center">
+          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog <i class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-3 bread">Our Blog</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+		<section class="ftco-section">
+      <div class="container">
+        <div class="row d-flex">
+
+
+{# --------start of posts  #}
+            {% for post in posts_all %}
+
+                <div class="col-md-3 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <div class="text">
+                <h3 class="heading"><a href="{{ post.get_url_post }}">{{ post.title }}</a></h3>
+                <div class="meta mb-3">
+                  <div><a href="#">{{ post.update }}</a></div>
+                </div>
+                <a href="{{ post.get_url_post }}" class="block-20 img" style="background-image: url('/{{ post.image }}');">
+	              </a>
+                  <p><i>{{ post.content|truncatechars:100}}</i></p>
+              </div>
+            </div>
+                </div>
+            {% endfor %}
+        </div>
+{#         end of posts   #}
+
+{#------numerations-------#}
+
+        <div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+
+            {% if page_obj.has_other_pages %}
+              <ul>
+                {% if page_obj.has_previous %}
+                        <li><a href="?page={{ page_obj.previous_page_number }}">&lt;</a></li>
+                {% endif %}
+
+                  {% for p in page_obj.paginator.page_range %}
+                    {% if page_obj.number == p %}
+                        <li  class="active"><span>{{ p }}</span></li>
+                    {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2  %}
+                        <li class="page-num"><a href="?page={{ p }}">{{ p }}</a></li>
+                    {% endif %}
+                {% endfor %}
+
+            {% if page_obj.has_next %}
+                <li class="page-num"><a href="?page={{ page_obj.next_page_number }}">&gt;</a></li>
+            {% endif %}
+
+              </ul>
+            {% endif %}
+            </div>
+          </div>
+        </div>
+    	</div>
+        {#numeration end#}
+    </section>
+
+{% endblock content %}

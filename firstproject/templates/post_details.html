@@ -1,0 +1,53 @@
+{#видаляємо відповідно до лекції 11#}
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>{{ title }}</title>#}
+{#</head>#}
+{#<body>#}
+{#видаляємо відповідно до лекції 11#}
+{#        {% if messages %}#}
+{#            <ul class="messages">#}
+{#            {% for message in messages %}#}
+{#                <li#}
+{#                        {%  if message.tags %} class="{{ message.tags }}"#}
+{#                        {% endif %}>#}
+{#                            {% if 'html_safe' in message.tags %}{{ massage | safe }}{% else %}{{ message }}#}
+{#                        {% endif %}#}
+{#                </li>#}
+{#            {% endfor %}#}
+{##}
+{#            </ul>#}
+{##}
+{#        {% endif %}#}
+
+
+{% extends 'base.html' %}
+
+{#якщо не прописувати цей код знизу, #}
+{#то для title підставиться значення з base.html#}
+{# але ми хочемо щоб в нас пропусувалась індивідуальна title з вюшки #}
+{% block head_title %}{{ title }}{% endblock head_title %}
+
+{#вказуємо, що тут в нас буде блок контент з 'base.html'#}
+{% block content %}
+
+            <h1 style="text-align: center">Деталі товару</h1>
+
+        <div class="col-sm-6 col-sm-offset-3">
+            <h1>{{ object.title }}<small>{{ object.timestamp }}</small></h1>
+            {{ object.content|linebreaks }}
+        </div>
+
+            <h1>----старий стиль</h1>
+            <h1 style="color: darkblue">{{ object.title }}</h1>
+            <p>{{ object.content }}</p>
+            <p>{{ object.timestamp }}</p>
+{#            <button onclick="{{ object.set_show }}" value="delete">Delete object</button>#}
+        <hr>
+
+{% endblock content %}
+{##}
+{#</body>#}
+{#</html>#}

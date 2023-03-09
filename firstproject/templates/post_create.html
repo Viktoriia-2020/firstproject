@@ -1,0 +1,29 @@
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>{{ title }}</title>#}
+{#</head>#}
+{#<body>#}
+{% extends 'base.html' %}
+{#        {{ title }}#}
+{% block head_title %}{{ title }}{% endblock head_title %}
+{% block content %}
+    <form action="" method="POST">
+{#        Для того щоб звертатися з фронтенду на бекенд -#}
+{#        ми маємо передавати ключ % csrf_token % із фронтенду та бекенд#}
+        {% csrf_token %}
+{#        відображаємо наші поля які ми хочемо бачити на фронтенді#}
+{#        .as_p - відображати кожне поле як параграф #}
+        {{ form.as_p }}
+{#        додаємо кнопну для збереження даних в бд#}
+        <input type="submit" class="btn btn-primary" value="Save post">
+{#    <button type="button" >Primary</button>#}
+    </form>
+{% endblock content %}
+
+
+
+
+{#</body>#}
+{#</html>#}

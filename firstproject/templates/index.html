@@ -1,0 +1,421 @@
+{% extends 'base.html' %}
+
+{% block head_title %}{{ title }}{% endblock head_title %}
+
+{% load static %}
+
+
+{% block content %}
+
+    <div class="hero-wrap ftco-degree-bg" style="background-image:url({% static '/images/bg_1.jpg' %});" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text justify-content-center align-items-center">
+          <div class="col-lg-8 col-md-6 ftco-animate d-flex align-items-end">
+          	<div class="text text-center">
+	            <h1 class="mb-4">Your Way to Find Property</h1>
+	            <h3 class="mb-4">Here you will find and buy your dream home</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mouse">
+				<a href="#" class="mouse-icon">
+					<div class="mouse-wheel"><span class="ion-ios-arrow-round-down"></span></div>
+				</a>
+			</div>
+    </div>
+
+{#Our Services BLOCK#}
+    <section class="ftco-section ftco-no-pb">
+      <div class="container">
+      	<div class="row justify-content-center">
+          <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+          	<span class="subheading">Our Services</span>
+            <h2 class="mb-2">The smartest way to buy a home</h2>
+          </div>
+        </div>
+        <div class="row d-flex">
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+            	<div class="icon d-flex justify-content-center align-items-center"><span class="flaticon-piggy-bank"></span></div>
+              <div class="media-body py-md-4">
+                <h3>No Down Payment</h3>
+                <p>Detailed information about the benefits of your service.</p>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+            	<div class="icon d-flex justify-content-center align-items-center"><span class="flaticon-wallet"></span></div>
+              <div class="media-body py-md-4">
+                <h3>All Cash Offer</h3>
+                <p>Detailed information about the benefits of your service.</p>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+            	<div class="icon d-flex justify-content-center align-items-center"><span class="flaticon-file"></span></div>
+              <div class="media-body py-md-4">
+                <h3>Experts in Your Corner</h3>
+                <p>Detailed information about the benefits of your service.</p>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-3 d-flex align-self-stretch ftco-animate">
+            <div class="media block-6 services d-block text-center">
+            	<div class="icon d-flex justify-content-center align-items-center"><span class="flaticon-locked"></span></div>
+              <div class="media-body py-md-4">
+                <h3>Locked in Pricing</h3>
+                <p>Detailed information about the benefits of your service.</p>
+              </div>
+            </div>      
+          </div>
+        </div>
+      </div>
+    </section>
+{# end Our Services BLOCK#}
+
+
+{#      start What we offer#}
+    <section class="ftco-section goto-here">
+    	<div class="container">
+    		<div class="row justify-content-center">
+          <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+          	<span class="subheading">What we offer</span>
+            <h2 class="mb-2">Exclusive Offer For You</h2>
+          </div>
+        </div>
+        <div class="row">
+             <!-- output properties, for, cycle -->
+            {% for property in property_all %}
+        	<div class="col-md-4">
+        		<div class="property-wrap ftco-animate">
+        			<a href="{{ property.get_url_property }}" class="img" style="background-image: url('/{{ property.image }}');"></a>
+        			<div class="text">
+        				<p class="price"><span class="orig-price">${{ property.price }}</span></p>
+        				<ul class="property_list">
+        					<li><span class="flaticon-bed"></span>{{ property.bed_room }}</li>
+        					<li><span class="flaticon-bathtub"></span>{{ property.bath_room }}</li>
+        					<li><span class="flaticon-floor-plan"></span>{{ property.floor_area }}</li>
+        				</ul>
+        				<h3><a href="{{ property.get_url_property }}">{{ property.title }}</a></h3>
+        				<span class="location">{{ property.region }}</span>
+        				<a href="{{ property.get_url_property }}" class="d-flex align-items-center justify-content-center btn-custom">
+        					<span class="ion-ios-link"></span>
+        				</a>
+        			</div>
+        		</div>
+        	</div>
+            {% endfor %}
+{#      end What we offer#}
+        </div>
+    	</div>
+    </section>
+
+{#      start How it works BLOCK#}
+
+    <section class="ftco-section ftco-degree-bg services-section img mx-md-5" style="background-image: url({% static 'images/how_it_works.jpg' %});">
+    	<div class="overlay"></div>
+    	<div class="container">
+    		<div class="row justify-content-start mb-5">
+          <div class="col-md-6 text-center heading-section heading-section-white ftco-animate">
+          	<span class="subheading">Work flow</span>
+            <h2 class="mb-3">How it works</h2>
+          </div>
+        </div>
+    		<div class="row">
+    			<div class="col-md-6">
+    				<div class="row">
+		    			<div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+		            <div class="media block-6 services services-2">
+		              <div class="media-body py-md-4 text-center">
+		              	<div class="icon mb-3 d-flex align-items-center justify-content-center"><span>01</span></div>
+		                <h3>Evaluate Property</h3>
+		                <p>Detailed information about this stage.</p>
+		              </div>
+		            </div>      
+		          </div>
+		          <div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+		            <div class="media block-6 services services-2">
+		              <div class="media-body py-md-4 text-center">
+		              	<div class="icon mb-3 d-flex align-items-center justify-content-center"><span>02</span></div>
+		                <h3>Meet Your Agent</h3>
+		                <p>Detailed information about this stage.</p>
+		              </div>
+		            </div>      
+		          </div>
+		          <div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+		            <div class="media block-6 services services-2">
+		              <div class="media-body py-md-4 text-center">
+		              	<div class="icon mb-3 d-flex align-items-center justify-content-center"><span>03</span></div>
+		                <h3>Close the Deal</h3>
+		                <p>Detailed information about this stage.</p>
+		              </div>
+		            </div>      
+		          </div>
+		          <div class="col-md-12 col-lg-6 d-flex align-self-stretch ftco-animate">
+		            <div class="media block-6 services services-2">
+		              <div class="media-body py-md-4 text-center">
+		              	<div class="icon mb-3 d-flex align-items-center justify-content-center"><span>04</span></div>
+		                <h3>Have Your Property</h3>
+		                <p>Detailed information about this stage.</p>
+		              </div>
+		            </div>      
+		          </div>
+		        </div>
+		      </div>
+    		</div>
+    	</div>
+    </section>
+{#      end How it works BLOCK#}
+
+    <section class="ftco-section ftco-no-pb">
+			<div class="container">
+				<div class="row no-gutters">
+					<div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url({% static 'images/team-about.jpg' %});">
+					</div>
+					<div class="col-md-6 wrap-about py-md-5 ftco-animate">
+	          <div class="heading-section p-md-5">
+	            <h2 class="mb-4">We Put People First.</h2>
+	            <p>Dream it!, we will work to accomplish what is important to you and assist you in a personalized manner.
+                    We consider it a real privilege to guide and accompany our clients in the purchase
+                    home by offering all the services essential and real estate expertise to the realization of their projects.</p>
+	                <p>We'll give you the time and attention you expect from a professional real estate agent,
+                        always demonstrating the highest levels of honesty, integrity, and professionalism.</p>
+                        <p>From formalities to after-sales service, through taxation, bank financing,
+                            or even the renovation of your property, we have brought together the professionals who will be able
+                            to support you and make your experience as smooth as possible.</p>
+                            <p>Our approach allows us to deliver a unique customer experience based on 3 fundamental pillars:
+                                excellent service, personalized support, and tailor-made solution.</p>
+	          </div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="ftco-counter img" id="section-counter">
+    	<div class="container">
+    		<div class="row">
+          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+            <div class="block-18 py-4 mb-4">
+              <div class="text text-border d-flex align-items-center">
+                <strong class="number" data-number="305">0</strong>
+                <span>Area <br>Population</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+            <div class="block-18 py-4 mb-4">
+              <div class="text text-border d-flex align-items-center">
+                <strong class="number" data-number="1090">0</strong>
+                <span>Total <br>Properties</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+            <div class="block-18 py-4 mb-4">
+              <div class="text text-border d-flex align-items-center">
+                <strong class="number" data-number="209">0</strong>
+                <span>Average <br>House</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+            <div class="block-18 py-4 mb-4">
+              <div class="text d-flex align-items-center">
+                <strong class="number" data-number="67">0</strong>
+                <span>Total <br>Branches</span>
+              </div>
+            </div>
+          </div>
+        </div>
+    	</div>
+    </section>
+
+    <section class="ftco-section testimony-section">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+          	<span class="subheading">Testimonial</span>
+            <h2 class="mb-3">Happy Clients</h2>
+          </div>
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel ftco-owl">
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div class="text">
+                    <p class="mb-4">I am not sure how you can have a better agent than Emelia and their entire team. If we ever need to sell our current home, we know exactly who to call when the time comes =).</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url({% static 'images/person_01.jpg' %})"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Tatiana Boyle</p>
+		                    <span class="position">Marketing Manager</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div class="text">
+                    <p class="mb-4">We couldn’t be more happy with the service we received from Emelia
+                        and will definitely recommend them to everyone we know!</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url({% static 'images/person_02.jpg' %})"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Aysha Decker</p>
+		                    <span class="position">Financial advisor</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div class="text">
+                    <p class="mb-4">Myla made us feel like friends and they made the whole process feel easy.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url({% static 'images/person_03.jpg' %})"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Brooklyn Montoya</p>
+		                    <span class="position">Literary agent</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div class="text">
+                    <p class="mb-4">I would strongly recommend Bridie to anyone looking to buy or sell a home,
+                        especially if they are first-time homebuyers.
+                        I would trust them with my eyes closed and their attention to detail and level
+                        of time/dedication to their clients is outstanding.</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url({% static 'images/person_04.jpg' %})"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Harriett House</p>
+		                    <span class="position">Costume designer</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap py-4">
+                  <div class="text">
+                    <p class="mb-4">I cannot say enough about my experience with Earl.
+                        They set the highest standards, and truly practice “service above self.
+                        ” You won this customer!</p>
+                    <div class="d-flex align-items-center">
+                    	<div class="user-img" style="background-image: url({% static 'images/person_05.jpg' %})"></div>
+                    	<div class="pl-3">
+		                    <p class="name">Hugh Estes</p>
+		                    <span class="position">Paramedic</span>
+		                  </div>
+	                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section ftco-agent ftco-no-pt">
+    	<div class="container">
+    		<div class="row justify-content-center pb-5">
+          <div class="col-md-12 heading-section text-center ftco-animate">
+          	<span class="subheading">Agents</span>
+            <h2 class="mb-4">Our Agents</h2>
+          </div>
+        </div>
+        <div class="row">
+        	<div class="col-md-3 ftco-animate">
+        		<div class="agent">
+    					<div class="img">
+		    				<img src="{% static 'images/team-1.jpg' %}" class="img-fluid" alt="Colorlib Template">
+	    				</div>
+	    				<div class="desc">
+	    					<h3><a href="#">Myla Mcleod</a></h3>
+								<p class="h-info"><span class="location">Contact</span> <span class="details">&mdash; +457 923 205</span></p>
+	    				</div>
+    				</div>
+        	</div>
+        	<div class="col-md-3 ftco-animate">
+        		<div class="agent">
+    					<div class="img">
+		    				<img src="{% static 'images/team-2.jpg' %}" class="img-fluid" alt="Colorlib Template">
+	    				</div>
+	    				<div class="desc">
+	    					<h3><a href="#">Bridie Brown</a></h3>
+								<p class="h-info"><span class="location">Contact</span> <span class="details">&mdash; +457 923 205</span></p>
+	    				</div>
+    				</div>
+        	</div>
+        	<div class="col-md-3 ftco-animate">
+        		<div class="agent">
+    					<div class="img">
+		    				<img src="{% static 'images/team-3.jpg' %}" class="img-fluid" alt="Colorlib Template">
+	    				</div>
+	    				<div class="desc">
+	    					<h3><a href="#">Earl Warner</a></h3>
+								<p class="h-info"><span class="location">Contact</span> <span class="details">&mdash; +457 923 205</span></p>
+	    				</div>
+    				</div>
+        	</div>
+        	<div class="col-md-3 ftco-animate">
+        		<div class="agent">
+    					<div class="img">
+		    				<img src="{% static 'images/team-4.jpg' %}" class="img-fluid" alt="Colorlib Template">
+	    				</div>
+	    				<div class="desc">
+	    					<h3><a href="#">Emelia Carr</a></h3>
+								<p class="h-info"><span class="location">Contact</span> <span class="details">&mdash; +457 923 205</span></p>
+	    				</div>
+    				</div>
+        	</div>
+        </div>
+    	</div>
+    </section>
+
+
+    <section class="ftco-section ftco-no-pt">
+      <div class="container">
+        <div class="row justify-content-center mb-5">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading">Blog</span>
+            <h2>Recent Blog</h2>
+          </div>
+        </div>
+        <div class="row d-flex">
+
+
+
+           {% for post in posts_all %}
+
+          <div class="col-md-3 d-flex ftco-animate">
+          	<div class="blog-entry justify-content-end">
+              <div class="text">
+                <h3 class="heading"><a href="{{ post.get_url_post }}">{{ post.title}}</a></h3>
+                <div class="meta mb-3">
+                  <div><a href="#">{{ post.update}}</a></div>
+                </div>
+                <a href="{{ post.get_url_post }}" class="block-20 img" style="background-image: url('/{{ post.image }}');">
+	              </a>
+                <p>{{ post.content|truncatechars:100}}</p>
+              </div>
+            </div>
+          </div>
+            {% endfor %}
+      </div>
+      </div>
+    </section>		
+
+{% endblock content %}
+
